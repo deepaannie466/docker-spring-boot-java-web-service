@@ -58,5 +58,12 @@ pipeline {
         }
       }
     }
+    stage('Deploying Application in "Production" Environment'){
+      steps{
+        script{
+           sh "kubectl apply -f deployment_production.yaml"
+        }
+      }
+    }
  }
 }
