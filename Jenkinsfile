@@ -49,7 +49,14 @@ pipeline {
          script{
            sh "kubectl apply -f deployment_dev.yaml"
          }
-     }
-   }
+      }
+    }
+    stage('Deploying Application in "Test" Environment'){
+      steps{
+        script{
+           sh "kubectl apply -f deployment_test.yaml"
+        }
+      }
+    }
  }
 }
