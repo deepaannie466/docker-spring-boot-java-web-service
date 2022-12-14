@@ -27,18 +27,18 @@ pipeline {
     }
     stage("Building Docker Image"){
       steps{
-         sh 'docker version'
          sh 'docker build -t spring-boot-image .'
          sh 'docker image list'
-         sh 'docker tag spring-application-image sujal2308/spring-boot-image:latest'
-         sh 'docker tag spring-application-image sujal2308/spring-boot-image:$BUILD_NUMBER'
+         sh 'docker tag spring-boot-image sujal2308/spring-boot-java-web-service:latest'
+         sh 'docker tag spring-boot-image sujal2308/spring-boot-java-web-service:$BUILD_NUMBER'
       }
     }
     stage("Push Image to Docker Hub"){
       steps{
          withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'PASSWORD')]){
            sh 'docker login -u sujal2308 -p $PASSWORD'
-           sh 'docker push sujal2308/spring-boot-image:$BUILD_NUMBER'
+           sh 'docker push sujal2308/spring-boot-java-web-service:$BUILD_NUMBER'
+           sh 'docker image rm sujal2308/spring-boot-java-web-service:$BUILD_NUMBER'
          }
       }
     }
