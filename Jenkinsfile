@@ -65,7 +65,7 @@ pipeline {
     stage('Deploying Application in "Production" Environment'){
       steps{
         script{
-           sh "kubectl config set-context kind-prod-cluster"
+           sh "kubectl config use-context kind-prod-cluster"
            sh "kubectl config get-contexts"
            sh "kubectl apply -f deployment_production.yaml"
         }
