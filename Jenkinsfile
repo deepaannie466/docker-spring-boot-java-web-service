@@ -47,8 +47,6 @@ pipeline {
     stage('Deploying Application in "Development" Environment'){
       steps{
          script{
-           sh "kubectl config use-context dev-cluster"
-           sh "kubectl config get-contexts"
            sh "kubectl apply -f deployment_dev.yaml"
          }
       }
@@ -56,8 +54,6 @@ pipeline {
     stage('Deploying Application in "Test" Environment'){
       steps{
         script{
-           sh "kubectl config use-context test-cluster"
-           sh "kubectl config get-contexts"
            sh "kubectl apply -f deployment_test.yaml"
         }
       }
@@ -65,8 +61,6 @@ pipeline {
     stage('Deploying Application in "Production" Environment'){
       steps{
         script{
-           sh "kubectl config use-context prod-cluster"
-           sh "kubectl config get-contexts"
            sh "kubectl apply -f deployment_production.yaml"
         }
       }
