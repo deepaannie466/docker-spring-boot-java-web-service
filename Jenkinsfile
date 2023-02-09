@@ -2,7 +2,6 @@ pipeline {
   agent any
   environment{
     scannerHome = tool 'SonarScanner'
-    JavaHome = tool 'JAVA_HOME'
   }
   stages {
     stage("Application Code Cloning from GitLab"){
