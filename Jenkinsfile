@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage("Application Code Cloning from GitLab"){
       steps{
-         git 'https://gitlab.com/sujalmitra/docker-spring-boot-java-web-service.git'
+         git 'https://github.com/deepaannie466/docker-spring-boot-java-web-service.git'
       }
     }
     stage('Packeging the Application'){
